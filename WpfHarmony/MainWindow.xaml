@@ -4,20 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfHarmony"
+        xmlns:vm="clr-namespace:WpfHarmony.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="305" Width="635">
+    <Window.DataContext>
+        <vm:TestViewModel />
+    </Window.DataContext>
     <Grid>
-        <Button x:Name="AddItem" Content="Добавить" HorizontalAlignment="Left" Margin="503,205,0,0" VerticalAlignment="Top" Background="#FF486DFF" Click="AddItem_Click"/>
-        <TextBox x:Name="EditValueText" HorizontalAlignment="Left" Margin="335,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="89"/>
-        <TextBox x:Name="FindNameText" HorizontalAlignment="Left" Margin="35,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="FindNameText_TextChanged"/>
-        <TextBox x:Name="EditNameText" HorizontalAlignment="Left" Margin="335,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="25"/>
+        <Button x:Name="AddItem" Content="Добавить" HorizontalAlignment="Left" Margin="503,205,0,0" VerticalAlignment="Top" Background="#FF486DFF" Command="{Binding AddClick}"/>
+        <TextBox x:Name="EditValueText" HorizontalAlignment="Left" Margin="335,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="89" Text="{Binding EditValue}"/>
+        <TextBox x:Name="FindNameText" HorizontalAlignment="Left" Margin="35,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding FindName}"/>
+        <TextBox x:Name="EditNameText" HorizontalAlignment="Left" Margin="335,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Height="25" Text="{Binding EditName}"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="335,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,0.194"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="35,44,0,0" VerticalAlignment="Top"/>
         <Label Content="Текст" HorizontalAlignment="Left" Margin="335,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,0.194"/>
         <Label Content="Найденое значение" HorizontalAlignment="Left" Margin="35,100,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="DeleteItem" Content="Удалить найденное" HorizontalAlignment="Left" Margin="104,227,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.252,1.004" Background="#FFFF4747" Click="DeleteItem_Click"/>
-        <Button x:Name="Update" Content="Выбрать для &#xD;&#xA;Обновления -&gt;" HorizontalAlignment="Left" Margin="220,110,0,0" VerticalAlignment="Top" Background="#FF57FF71" Click="Update_Click" Height="46" Width="110"/>
-        <TextBlock x:Name="FindValueText" HorizontalAlignment="Left" Margin="35,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="91" Width="180"/>
+        <Button x:Name="DeleteItem" Content="Удалить найденное" HorizontalAlignment="Left" Margin="104,227,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.252,1.004" Background="#FFFF4747" Command="{Binding DeleteClick}"/>
+        <Button x:Name="Update" Content="Выбрать для &#xD;&#xA;Обновления -&gt;" HorizontalAlignment="Left" Margin="220,110,0,0" VerticalAlignment="Top" Background="#FF57FF71" Height="46" Width="110" Command="{Binding UpdateClick}"/>
+        <TextBlock x:Name="FindValueText" HorizontalAlignment="Left" Margin="35,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="91" Width="180" Text="{Binding FindValue}"/>
         <Label Content="Поиск" HorizontalAlignment="Left" Margin="81,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Добавить" HorizontalAlignment="Left" Margin="425,5,0,0" VerticalAlignment="Top"/>
     </Grid>
